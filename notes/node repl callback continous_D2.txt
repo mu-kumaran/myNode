@@ -1,0 +1,220 @@
+REPL - Terminal:
+================
+
+R - Read
+E - Eval
+P - Print
+L - Loop
+
+d:/foldername>node
+
+> var x=8
+> _
+> while (x<=50)
+{
+	console.log(x)
+	x++;
+}
+> 8....50
+>  ctrl+c (2 times - exit)
+> ctrl+d (single command exit )
+>tab key press (list of commands)
+>terminal open/hide : ctrl+~
+md : make directory
+cd : change directory
+cd.. prev folder(back)
+cd\  source drive (d:\>
+================================================
+callback?
+	asynchronous function.
+	all api in mern stack asynchronous communications
+	two types:
+	1) blocking   - synchronous (line by line code execution)
+	2) non-blocking - asynchronous - call back (last exection)
+
+
+	>npm install fs
+
+	block:(sync/line by line)
+	======
+	var fs=require("fs")
+	var data=fs.readFileSync("myfile.txt")
+	console.log(data.toString())
+	console.log("program end")
+
+	ouput: 		data print
+			program end
+
+	non-block(async/callback)
+	=========================
+	var fs=require("fs")
+	fs.readFile("myfile.txt",(err,data)=>{
+	    console.log(data.toString())
+	})
+	console.log("program end")	
+
+	output: 
+			program end
+			data (call back)
+
+ 
+	advanced: error maintain:
+	=========================
+	var fs=require("fs")
+	fs.readFile("myfile2.txt",(err,data)=>{
+	    if (err)
+	    {
+        	console.log(err)
+	    }
+	//or if (err) throws err
+	    else
+	    console.log(data.toString())
+	})
+	console.log("program end")
+
+	task:fs output in browser.
+	==========================
+	var http=require('http')
+	var fs=require("fs")
+	http.createServer((req,res)=>{
+
+	res.writeHeader(200,{"Content-Type":"text/html"})
+	// it will works on html tag
+
+	    var output=null
+	    fs.readFile("myfile.txt",(err,data)=>{
+	    output=data.toString()
+	    console.log(output)   
+		
+	    res.write("hai<br><p>"+output+"</p>) 
+	    res.end()  // must important
+	    })    
+	}).listen(8765)
+	console.log("port listening at 8765.....")
+
+======================================================================
+Event Loop and Emitter:
+
+	In NodeJS multiple events available.
+
+	events Module and EventEmitter class.
+
+	npm install events
+
+	EventEmitter has two properties
+		i)  on    (called) -->purpose: event bind
+		ii) emit  (calling)-->purpose: fire 
+
+	import header:
+	var events = require("events")
+	var eventemitter   =new events.EventEmitter()
+	syntax:
+		
+	eventsemitter.on("eventname","eventhandler")
+	eventsemitter.emit("eventname")
+
+	ex:
+	var events=require("events")
+	var ee=new events.EventEmitter()
+
+	//step 5
+	ee.on("abi",()=>{
+	    console.log("program end")
+	})
+
+	//setp3
+	const myfun=()=>{
+	    console.log("events handled success")
+	    ee.emit("abi") //step 4
+	}
+
+	ee.on("studentevent",myfun) //step 2
+
+	ee.emit("studentevent") // step 1
+==============================================================
+Buffer:
+	Buffer is a memory. it is used to store data in raw.
+
+	raw: similar to array of integers
+
+		or
+	     data stored on index based (Default: 0 1 2....)
+
+	Buffer is a global module. so we don't need to import modules.
+
+
+	// how to create buffer?
+
+	var variablename=new Buffer.alloc(25)
+	
+	(0 to 24 index)
+
+	// buffer inbuilt function
+
+	write
+
+	from
+
+	allocunsafe
+
+	note:
+
+	don't install Buffer module
+	don't import Buffer Module
+
+ ======================================================================
+var buf=new Buffer.alloc(50)
+var len;
+console.log("total chars:"+len)
+console.log("output:"+buf)
+
+len=buf.write("gowthaman karur")
+
+console.log("total chars:"+len)
+console.log("output:"+buf)
+
+for (k of buf.toString())
+    {
+        console.log(k+"  ")
+    }
+    
+buf.write("manoj",10)
+
+for (k of buf.toString())
+    {
+        console.log(k+"  ")
+    }
+  =====================
+task: 1) vowels only print
+task: 2) insert at middle (don't overwrite)
+============================================
+
+var buf=new Buffer.allocUnsafe(20)
+console.log(buf)
+
+var buf1=Buffer.from("manoj karur")
+console.log(buf1.toString())
+=============================================
+
+
+
+	
+
+
+
+	
+	
+
+
+	
+	
+
+
+
+	
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+setting node js:
+================
+
+step 1:
+	create one folder in d drive
+
+step 2:
+	open folder
+	address bar : select : cmd type and enter
+
+step 3: command :
+	d:/your foldername>code .
+
+step 4: vs code -->terminal -->(ctrl + ~) ~ tiled
+
+	>npm init
+	package.json file created automattically
+
+step 5:
+	d:/your folder>npm intall http
+
+	http: use : port listen + server always running
+
+	see node_modules folder-->http
+
+setp 6:
+	d:/your folder>md pgmfolder
+	d:/your folder>cd pgmfolder
+	d:/your folder/pgmfolder> 
+
+step 7:
+	pgmfolder right click ==> new file ==>pgm.js
+
+	program type:
+	
+	var http=require("http")
+	http.createServer((req,res)=>{
+		res.write("<h1>.........</h1>")
+	}).listen(3454)
+	console.log("port listening at 3454")	
+
+
+step 8:
+	terminal:
+
+	d:/yourfoler/pgmfolder>	 node pgm.js
+
+	port listening at 3454
+
+step 9:
+	goto chrome :
+	http://localhost:3454
+
+	output
