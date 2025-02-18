@@ -1,0 +1,5 @@
+var fs=require("fs")
+var rs=fs.createReadStream("newfile.txt")
+var ws=fs.createWriteStream("writefile.txt")
+rs.pipe(ws)
+console.log("file transfered")
