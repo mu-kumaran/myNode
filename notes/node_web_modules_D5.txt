@@ -1,0 +1,65 @@
+web modules:
+==========
+http
+fs
+url
+import modules:
+===========
+var http=require("http")
+var fs=require("fs")
+var url=require("url")
+purpose:
+======
+to identify which file is user running.
+note:
+====
+server always running with port number
+port number range( 0 to 65535)
+
+port listen:
+========
+http.createServer((req,res)=>{
+....
+....
+}).listen(portnumber)
+//or
+http.createServer(function(req,res){
+....
+....
+}).listen(portnumber)
+
+how to find path of the file?
+===================
+var pathname=url.parse(req.url).pathname
+console.log(pathname)
+
+how to run web modules pgm?
+=======================
+filename.js --> must running
+
+create html file: type any data
+
+browser open:
+url: http://127.0.0.1:portnumber/anyfilename.html
+ex:
+http://127.0.0.1:9876/pgm1.html
+
+program
+----------
+var http=require("http")
+var fs=require("fs")
+var url=require("url")
+http.createServer((req,res)=>{
+    var path=url.parse(req.url).pathname //.path //.href
+    console.log(path)
+    path=path.substring(1)
+    console.log(path)
+    fs.readFile(path,(err,data)=>{
+       // if (err) throw err
+        res.writeHeader(200,{"Content-Type":"text/html"})
+        res.write(data)
+        console.log(data.toString())
+        res.end() //don't loop continous execution
+    })
+}).listen(4300)
+console.log("port listening at 4300")

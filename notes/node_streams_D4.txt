@@ -1,0 +1,68 @@
+Streams are objects that let you read data from a source or
+write data to a destination in continuous fashion.
+
+In Node.js, there are four types of streams
+
+Readable − Stream which is used for read operation.
+
+Writable − Stream which is used for write operation.
+
+Duplex − Stream which can be used for both read and write operation.
+
+Transform − A type of duplex stream where the output is computed based on input.
+
+Each type of Stream is an EventEmitter instance and
+throws several events at different instance of times.
+For example, some of the commonly used events are −
+
+data − This event is fired when there is data is available to read.
+
+end − This event is fired when there is no more data to read.
+
+error − This event is fired when there is any error receiving or writing data.
+
+finish − This event is fired when all the data has been flushed to underlying system.
+
+---------------------
+var fs=require("fs")
+var ans=""
+var readStream=fs.createReadStream("myfile.txt")
+readStream.setEncoding("utf8")
+
+//available to read data
+readStream.on('data',function(chunk){
+    ans=ans+chunk
+});
+
+//no more data to read
+readStream.on('end',function(){
+    console.log("file data:"+ans)
+})
+
+//error : path mistake
+readStream.on('error',function(err){
+    console.log("error:"+err.stack)
+})
+
+
+var fs=require("fs")
+var writeStream=fs.createWriteStream("newfile.txt")
+var yourdata="hi i am gowthaman from namakkal"
+writeStream.write(yourdata,'utf8')
+writeStream.end()
+
+writeStream.on("finish",()=>{
+    console.log("successfully inserted")
+})
+writeStream.on("error",(err)=>{
+    console.log("Error:",err.stack)
+})
+console.log("program end")
+
+
+
+var fs=require("fs")
+var rs=fs.createReadStream("newfile.txt")
+var ws=fs.createWriteStream("writefile.txt")
+rs.pipe(ws)
+console.log("file transfered")

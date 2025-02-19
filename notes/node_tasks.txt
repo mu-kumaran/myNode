@@ -1,0 +1,44 @@
+//=================================insert middle don't overwrite==========
+// var varName = new Buffer.alloc(50);
+// var len = varName.write("Manoj Karur");  //11
+
+// //string insertion position
+// var insPosi = 7;  
+
+// //name of the string to be inserted
+// var insString = "Karur"; 
+
+// var lent = insString.length  //5
+
+// for(i=insPosi;i<len;i++){
+//     varName.write(varName.toString()[i],i+lent)    
+// }
+//  varName.write(insString,insPosi);
+
+//  //output
+//  console.log(varName.toString())
+//========================================vowles==================
+
+buf=new Buffer.from("gowthamanKARUR")
+console.log(buf.toString())
+data=buf.toString()
+console.log(data)
+
+arr=data.split('')
+console.log(arr)
+
+len=arr.length;
+console.log(len)
+
+vowels="aeiouAEIOU"
+
+for(var i=0;i<len;i++)
+{
+    if(vowels.includes(arr[i]))
+        console.log(arr[i])
+    }
+//or advanced tech --> vowels in array format
+var ans=arr.filter((item)=>{
+    return vowels.includes(item)
+})  
+console.log(ans)

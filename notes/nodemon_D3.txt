@@ -1,0 +1,24 @@
+nodemon:
+
+Nodemon module is used to avoid again and again run in command/terminal.
+
+note:
+very first time only install.
+
+how to install ?
+>npm init -y
+>npm instal nodemon --save-dev
+
+package.json:
+=============
+scripts:
+{
+"test": "............",
+"dev":"nodemon mainfilename.js"
+}
+
+run:(terminal)
+=============
+> npm run dev
+
+dont give: node filename.js
